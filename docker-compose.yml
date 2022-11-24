@@ -7,7 +7,7 @@ services:
       dockerfile: Dockerfile
     container_name: pxe
     environment:
-      - TZ=Europe/London
+      - TZ=Europe/Madrid
     volumes:
       - ./volumes/tftpboot/pxelinux.cfg/:/var/lib/tftpboot/pxelinux.cfg/
       - ./volumes/files/:/var/lib/tftpboot/files/
