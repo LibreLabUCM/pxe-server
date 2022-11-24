@@ -1,0 +1,9 @@
+.vagrant/
+
+*.log
+
+volumes/caddy_config/
+volumes/caddy_data/
+volumes/caddy_logs/
+volumes/files/
+volumes/isos/

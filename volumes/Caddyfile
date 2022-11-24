@@ -1,0 +1,38 @@
+{
+  auto_https off
+}
+
+iso.librelabucm.org:80 {
+  root * /srv/isos/
+  file_server browse
+  log {
+    output file /var/log/caddy/isos.log
+    format json
+    level INFO
+  }
+  encode zstd gzip
+}
+
+mirror.librelabucm.org:80 {
+  reverse_proxy http://mirror.librelabucm.org:80
+  #root * /srv/mirror/
+  #file_server browse
+  log {
+    output file /var/log/caddy/mirror.log
+    format json
+    level INFO
+  }
+  encode zstd gzip
+}
+
+
+:80 {
+  root * /srv/isos/
+  file_server browse
+  log {
+    output file /var/log/caddy/default.log
+    format json
+    level INFO
+  }
+  encode zstd gzip
+}

@@ -1,0 +1,102 @@
+INCLUDE pxelinux.cfg/base
+MENU TITLE Install GNU/Linux distribution
+
+
+LABEL ubuntu-22.04.1-desktop-amd64
+  KERNEL /files/ubuntu-22.04.1-desktop-amd64/vmlinuz
+  INITRD /files/ubuntu-22.04.1-desktop-amd64/initrd
+  APPEND root=/dev/ram0 ramdisk_size=1500000 ip=dhcp url=http://iso.librelabucm.org/ubuntu-22.04.1-desktop-amd64.iso preseed/file=/cdrom/ubuntu.seed
+
+
+
+LABEL -
+  MENU LABEL linuxmint-21-64bit
+  MENU DISABLE
+
+LABEL linuxmint-21-cinnamon-64bit
+  MENU LABEL Cinnamon
+  MENU INDENT 1
+  KERNEL /files/linuxmint-21-cinnamon-64bit/vmlinuz
+  INITRD /files/linuxmint-21-cinnamon-64bit/initrd.lz
+  APPEND root=/dev/ram0 ramdisk_size=1500000 ip=dhcp url=http://iso.librelabucm.org/linuxmint-21-cinnamon-64bit.iso
+
+LABEL linuxmint-21-mate-64bit
+  MENU LABEL Mate
+  MENU INDENT 1
+  KERNEL /files/linuxmint-21-mate-64bit/vmlinuz
+  INITRD /files/linuxmint-21-mate-64bit/initrd.lz
+  APPEND root=/dev/ram0 ramdisk_size=1500000 ip=dhcp url=http://iso.librelabucm.org/linuxmint-21-mate-64bit.iso
+
+LABEL linuxmint-21-xfce-64bit
+  MENU LABEL XFCE
+  MENU INDENT 1
+  KERNEL /files/linuxmint-21-xfce-64bit/vmlinuz
+  INITRD /files/linuxmint-21-xfce-64bit/initrd.lz
+  APPEND root=/dev/ram0 ramdisk_size=1500000 ip=dhcp url=http://iso.librelabucm.org/linuxmint-21-xfce-64bit.iso
+
+
+
+LABEL -
+  MENU LABEL debian-11.5.0-amd64-netinst
+  MENU DISABLE
+
+LABEL debian-11.5.0-amd64-netinst Graphical
+  MENU LABEL Graphical
+  MENU INDENT 1
+  KERNEL /files/debian-11.5.0-amd64-netinst/gtk/linux
+  INITRD /files/debian-11.5.0-amd64-netinst/gtk/initrd.gz
+  APPEND preseed/url=http://iso.librelabucm.org/debian-11.5.0-amd64-netinst/preseed.cfg theme=dark vga=788
+
+LABEL debian-11.5.0-amd64-netinst TXT
+  MENU LABEL TXT
+  MENU INDENT 1
+  KERNEL /files/debian-11.5.0-amd64-netinst/txt/linux
+  INITRD /files/debian-11.5.0-amd64-netinst/txt/initrd.gz
+  APPEND preseed/url=http://iso.librelabucm.org/debian-11.5.0-amd64-netinst/preseed.cfg theme=dark
+
+
+
+
+LABEL -
+  MENU LABEL manjaro-21.3.7-220816-linux515
+  MENU DISABLE
+
+LABEL manjaro-gnome-21.3.7-220816-linux515
+  MENU LABEL Gnome
+  MENU INDENT 1
+  KERNEL /files/manjaro-gnome-21.3.7-220816-linux515/vmlinuz-x86_64
+  INITRD /files/manjaro-gnome-21.3.7-220816-linux515/amd_ucode.img,/files/manjaro-gnome-21.3.7-220816-linux515/intel_ucode.img,/files/manjaro-gnome-21.3.7-220816-linux515/initramfs-x86_64.img
+  APPEND root=/dev/ram0 ramdisk_size=1500000 ip=dhcp misobasedir=manjaro miso_http_srv=http://iso.librelabucm.org/manjaro-gnome-21.3.7-220816-linux515/ misolabel=manjaro
+
+LABEL manjaro-xfce-21.3.7-220816-linux515
+  MENU LABEL XFCE
+  MENU INDENT 1
+  KERNEL /files/manjaro-xfce-21.3.7-220816-linux515/vmlinuz-x86_64
+  INITRD /files/manjaro-xfce-21.3.7-220816-linux515/amd_ucode.img,/files/manjaro-xfce-21.3.7-220816-linux515/intel_ucode.img,/files/manjaro-xfce-21.3.7-220816-linux515/initramfs-x86_64.img
+  APPEND root=/dev/ram0 ramdisk_size=1500000 ip=dhcp misobasedir=manjaro miso_http_srv=http://iso.librelabucm.org/manjaro-xfce-21.3.7-220816-linux515/ misolabel=manjaro
+
+LABEL manjaro-kde-21.3.7-220816-linux515
+  MENU LABEL KDE
+  MENU INDENT 1
+  KERNEL /files/manjaro-kde-21.3.7-220816-linux515/vmlinuz-x86_64
+  INITRD /files/manjaro-kde-21.3.7-220816-linux515/amd_ucode.img,/files/manjaro-kde-21.3.7-220816-linux515/intel_ucode.img,/files/manjaro-kde-21.3.7-220816-linux515/initramfs-x86_64.img
+  APPEND root=/dev/ram0 ramdisk_size=1500000 ip=dhcp misobasedir=manjaro miso_http_srv=http://iso.librelabucm.org/manjaro-kde-21.3.7-220816-linux515/ misolabel=manjaro
+
+
+
+LABEL archlinux-x86_64-2022.11.01
+  MENU LABEL ^archlinux-x86_64-2022.11.01
+  KERNEL /files/archlinux-x86_64-2022.11.01/vmlinuz-linux
+  INITRD /files/archlinux-x86_64-2022.11.01/amd-ucode.img,/files/archlinux-x86_64-2022.11.01/intel-ucode.img,/files/archlinux-x86_64-2022.11.01/initramfs-linux.img
+  APPEND archisobasedir=arch archiso_http_srv=http://10.0.0.1/archlinux-x86_64-2022.11.01/ checksum verify
+  SYSAPPEND 3
+
+
+
+MENU SEPARATOR
+
+LABEL main
+  MENU LABEL Main menu
+  KERNEL vesamenu.c32
+  APPEND ~
+

@@ -1,0 +1,29 @@
+DEFAULT vesamenu.c32
+SAY Now booting in LLU PXE Boot MENU...
+
+MENU BACKGROUND   pxelinux.cfg/splash_llu.png
+MENU TITLE LLU PXE Boot MENU
+MENU COLOR screen   * #00000000 #00000000 none
+MENU COLOR border   * #00000000 #00000000 none
+MENU COLOR title    * #FFFFFFFF #00000000 none
+MENU COLOR unsel    * #ffffffff #ff000000 *
+MENU COLOR disabled * #FF00B2FF #ff000000 *
+MENU COLOR hotkey   * #ffdddd00 #ff000000 *
+MENU COLOR sel      * #ffffffff #ff808080 *
+MENU COLOR hotsel   * #ffdddd00 #ff808080 *
+MENU COLOR tabmsg   * #FFFFFFFF #00000000 none
+MENU COLOR cmdline  * #FF0FFF00 #00000000 none
+MENU COLOR help 37;40 #ffdddd00 #00000000 none
+MENU MSGCOLOR         #FF0FFF00 #FFFFFFFF std
+MENU VSHIFT 2
+MENU ROWS 18
+MENU HELPMSGROW 20
+MENU CMDLINEROW 22
+MENU TIMEOUTROW 22
+MENU TABMSGROW 24
+MENU TABMSG Press ENTER to boot or TAB to edit a menu entry
+MENU HELP pxelinux.cfg/help
+
+PROMPT 1
+TIMEOUT 0
+UI vesamenu.c32

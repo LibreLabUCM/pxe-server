@@ -1,0 +1,15 @@
+INCLUDE pxelinux.cfg/base
+MENU TITLE Install GNU/Linux distribution
+
+
+LABEL memtest86
+  MENU LABEL Memtest86+
+  KERNEL /memtest/memtest86+
+
+MENU SEPARATOR
+
+LABEL main
+  MENU LABEL Main menu
+  KERNEL vesamenu.c32
+  APPEND ~
+

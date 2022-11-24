@@ -1,0 +1,30 @@
+---
+version: "3"
+services:
+  pxe:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pxe
+    environment:
+      - TZ=Europe/London
+    volumes:
+      - ./volumes/tftpboot/pxelinux.cfg/:/var/lib/tftpboot/pxelinux.cfg/
+      - ./volumes/files/:/var/lib/tftpboot/files/
+    network_mode: host
+    cap_add:
+      - NET_ADMIN
+    restart: unless-stopped
+    command: --dhcp-range=10.0.0.2,10.0.0.250,255.255.255.0 --interface=enp6s0 --interface=lo --address=/mirror.librelabucm.org/10.0.0.1 --address=/iso.librelabucm.org/10.0.0.1 --address=/librelabucm.org/10.0.0.1 --dhcp-option=5,10.0.0.1 --dhcp-option=enp6s0,6,10.0.0.1 --bind-interfaces --port=53
+  caddy:
+    image: caddy:latest
+    ports:
+      - "80:80"
+    volumes:
+      - ./volumes/Caddyfile:/etc/caddy/Caddyfile
+      - ./volumes/isos/:/srv/isos/
+      - ./volumes/caddy_mirror/:/srv/mirror/
+      - ./volumes/caddy_data:/data
+      - ./volumes/caddy_config:/config
+      - ./volumes/caddy_logs:/var/log/caddy
+    restart: unless-stopped
